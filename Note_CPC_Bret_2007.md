@@ -14,7 +14,9 @@
     > Nevertheless, even the fluid tensor can be analytically involved when considering ...
 * *Mathematica notebook* -- the symbolic calculation of the fluid tensor
 
-##
+## Theory
+
+
 
 
 
