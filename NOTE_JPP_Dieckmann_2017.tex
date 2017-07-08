@@ -1,0 +1,589 @@
+\documentclass[10pt]{beamer}
+
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{bm}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+
+\usepackage{xspace}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+\title{Literature Research}
+\subtitle{Simulation study of the formation of a non-relativistic pair shock (\emph{M. E. Dieckmann}, \textbf{J. Plasma Phys. 2017})}
+\date{\today}
+% \date{}
+\author{Weipeng Yao}
+\institute{Center for Applied Physics and Technology}
+% \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Table of contents}
+  \setbeamertemplate{section in toc}[sections numbered]
+  \tableofcontents[hideallsubsections]
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}[fragile]{Opening: Astrophysical jet}
+  
+  \begin{itemize}
+  
+  \item relativistic jet from microquasars -- observed directly
+  
+  \item ultra-relativistic jet from GRBs during supernovae -- not possible
+  
+%   \item mildly relativistic plasma outflow -- observed by Kulkarni et al. from supernova 1998bw
+  
+  \end{itemize} 
+
+\end{frame}
+
+\begin{frame}[fragile]{Physics: Internal shocks}
+  
+  \begin{itemize}
+  \item WHY:
+  
+  acceleration efficiency due to accretion is not constant in time
+  
+  \item WHERE:
+  
+  locations with a large velocity change
+  
+  \item SO:
+  
+  strong sources of electromagnetic radiation (Rees 1978)
+  
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}[fragile]{Internal shock in GRBs jet}
+
+  \begin{itemize}
+  \item relativistic factors -- order of a few
+  \item scenario -- collision of lepton clouds at relativistic speeds
+  \item dominant -- magnetic fields from beam-Weibel/filamentation instability mediate these shocks and thermalize plasma
+  \item \alert{a wide range of theoretical and numerical studies} -- 
+  
+  Kazimura et al. 1998; Medvedev \& Loeb 1999; Brainerd 2000; Sakai et al. 2000; Haruki \& Sakai 2003; Silva et al. 2003; Jaroschek, Lesch \& Treumann 2004; Medvedev et al. 2005; Milosavljevic \& Nakar 2006; Chang, Spitkovsky \& Arons 2008; Stockem, Dieckmann \& Schlickeiser 2008; Bret et al. 2008, 2013; Sironi \& Giannios 2014; Marcowith et al. 2016
+  \item in other word, EM $>$ ES
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Internal shock in microquasar jet}
+  \begin{itemize}
+  \item component -- a significant fraction of positrons (Trigo et al. 2013)
+  \item may not always be relativistic -- electrostatic processes may become important
+  \item \alert{Motivation -- Non-relativistic pair shocks have so far not reveived much attention and the structure of their transition layers remains unknown.}
+  \end{itemize}
+  \textcolor{red}{Non-relativistic electron-ion shocks exist in solar winds studies.}
+\end{frame}
+
+\section{Shock formation, simulation setup and theoretical solution}
+
+\subsection{formation mechanism of collisionless leptonic shock}
+
+\begin{frame}[fragile]{Three wave modes}
+  
+  assumption -- charge and current neutral, pair components, unmagnetized, same temperature
+  \begin{itemize}
+  \item two-stream modes -- purely electrostatic (parallel)
+  \item oblique modes -- quasi-electrostatic (oblique)
+  \item filamentation/beam-Weibel modes -- electromagnetic (perpendicular)
+  \end{itemize}
+  grow simultaneously during the shock formation stage 
+  
+%   halted by nonlinear processes -- heating towards a thermal equilibrium
+\end{frame}
+
+% \begin{frame}{Three scenarios}
+%   \begin{itemize}
+%   \item reflecting wall -- efficient \\
+%   shock formation phase may not be correctly resolved \\
+%   suppress the filamentation instability at the reflecting wall
+%   \item identical colliding clouds -- resolve formation stage \\
+%   computationally expensive and unnecessary to track  both shocks for a long time \\
+%   \item long \& short colliding clouds -- all good
+%   \end{itemize}
+% \end{frame}
+
+\subsection{Simulation setup}
+
+\begin{frame}{Model}
+  
+  \begin{center}
+    $N_x = 1.9\times 10^4, N_y = 760, ppc = 25$ \\
+    $L_x = 60 \lambda_e, L_y = 2.4 \lambda_e, t_{sim} = 120 \omega_p^{-1}$
+  \end{center}
+  
+  \begin{figure}
+    \includegraphics[]{model.pdf}
+  \end{figure}
+  
+%   \begin{quote}
+%     The simulation is stopped well before the end of the inflowing lepton cloud encounters the shock or before the leptons that are reflected by the boundary at $x=0.35L_x$ return to the shock.
+%   \end{quote}
+
+\end{frame}
+
+\subsection{solution of linear dispersion relation}
+
+\begin{frame}{theoretical purposes}
+  \begin{enumerate}
+    \item verify the box is large enough to resolve the competing unstable modes
+    \item which one is the fastest for the selected initial conditions
+    \item spectrum of the growing waves
+  \end{enumerate}
+\end{frame}
+
+\setbeamertemplate{frame footer}{\textcolor{red}{Bret, Gremillet \& Dieckmann 2010}}
+\begin{frame}{dispersion relation}
+
+  \begin{itemize}
+    \item assumptions -- the overlap layer has an infinite size
+    \item cold beam approximation -- $T_0 = 10eV, v_{th} = 4.5e-3c \ll v_0=0.2c$
+    \item change of reference frame -- total momentum vanishes ($v_{l0} = v_{r0} = 0.1c$)
+  \end{itemize}
+  
+  \begin{equation*}
+    (\omega^2\epsilon_{xx}-k_y^2c^2)(\omega^2\epsilon_{yy}-k_x^2c^2) - (\omega^2\epsilon_{yx}+k_xk_yc^2)^2 = 0
+  \end{equation*}
+  where $\delta_{\alpha\beta}$ is the Kronecker symbol and 
+  
+  \begin{equation*}
+    \epsilon_{\alpha\beta}(\bm{k},\omega) = \delta_{\alpha\beta}\left( 1-\frac{\omega_p^2}{\omega^2} \right) + \frac{\omega_p^2}{\omega^2} \sum_j \int d^3p \frac{p_{\alpha}p_{\beta}\bm{k}\cdot \left( \frac{\partial f_j^0}{\partial \bm{p}} \right)}{m\omega-\bm{k}\cdot\bm{p}}
+  \end{equation*}
+\end{frame}
+
+
+\begin{frame}{box size limitation}
+  \begin{figure}
+    \includegraphics[width=0.6\textwidth]{solution.png}
+  \end{figure}
+  \begin{itemize}
+  \item growth rate peaks at $k_x\lambda_e \approx 12$ and does not depend on $k_y\lambda_e$
+  \item the smallest resolved wavenumber is $k_c = 2\pi/L_y$ or $k_y\lambda_e=2.6$ -- waves with $k_y < k_c$ cannot grow.
+  \item for $k_y < k_c$, the growth rate of filamentation mode decreases below $\delta_{W}$, while that of TS/O remains unchanged.
+  \item So, limited box size effect is to suppress the wavenumbers where the growth rate of F is negligible.
+  \end{itemize}
+\end{frame}
+
+\setbeamertemplate{frame footer}{ }
+\begin{frame}{solutions}
+
+  \begin{quote}
+    The problem of finding the fastest-growing mode has been solved (\textcolor{red}{Bret \& Deutsch 2005; Bret et al. 2013}) for cold distributions of the form $f_j^0(\bm{p}) = \delta(p_y)\delta(p_x-P_j)$.
+  \end{quote}
+  
+  Another assumption -- identical density between two colliding electrons
+  
+  \begin{equation*}
+      \begin{aligned}
+        \varepsilon_{xx} & = 1-\frac{\omega_p^2}{\omega^2} + \frac{\omega_p^2}{\omega^2}\sum_j \frac{k_x^2p_0^2-k_y^2p_0^2-2k_xp_0m\omega}{(m\omega-k_xp_0)^2} \\
+        \varepsilon_{yy} & = 1-\frac{\omega_p^2}{\omega^2} \\
+        \varepsilon_{yx} & = -\frac{\omega_p^2}{\omega^2}\sum_j\frac{k_yp_0}{m\omega-k_xp_0}
+      \end{aligned}
+  \end{equation*}
+  
+  \textcolor{red}{To Do Numerical analysis to draw Fig.1}
+  
+  
+
+\end{frame}
+
+\begin{frame}{growth rate, separately}
+    \begin{itemize}
+      \item for two-stream/oblique modes, let $k_x \neq 0, k_y = 0$ \\
+      $\frac{\delta_{TS}}{\omega_p}=\frac{\sqrt{2}}{2}$ \\
+      \textcolor{red}{there's something wrong}
+      \item for filamentation modes (flow-aligned $k_x=0, k_y \neq 0$) \\ $\frac{\delta_{W}}{\omega_p}=\textcolor{red}{2}\beta_0^{'}=0.2$
+      \item $\delta_{TS} > \delta_{W}$, TS dominates.
+      
+      \item however, the fastest mode is oblique inst. when $k_x, k_y \neq 0$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Bret \& Deutsch 2005 -- 1}
+the general form of the dispersion equation
+\begin{equation}
+    det \left| \frac{\omega^2}{c^2}\varepsilon_{\alpha \beta} + k_\alpha k_\beta - k^2\delta_{\alpha \beta}\right| = 0
+\end{equation}
+where the dielectric tensor elements are
+\begin{equation}
+    \varepsilon_{\alpha \beta}(\bm{k},\omega) = \delta_{\alpha\beta} + \frac{\omega_p^2}{n_e\omega^2} \int \frac{p_\alpha}{\gamma}\frac{\partial f_0}{\partial p_\beta}d^3p + \frac{\omega_p^2}{n_e\omega^2} \int \frac{p_\alpha p_\beta}{\gamma} \frac{\bm{k}\cdot \partial f_0 / \partial \bm{p}}{m\gamma\omega-\bm{k}\cdot\bm{p}}d^3p
+\end{equation}
+
+In the non-relativistic collisionless limit, the first quadrature reduces to $-\delta_{\alpha \beta}\omega_p^2/\omega^2$.  (\textcolor{red}{?})
+\end{frame}
+
+\begin{frame}{Bret \& Deutsch 2005 -- 2}
+As long as the equilibrium function can be expressed as $\sum_i g_x^i(v_x^2) g_y^i(v_y^2) g_z^i(v_z)$, the electromagnetic dispersion equation for the TSF branch reads
+\begin{equation}
+    (\eta^2\varepsilon_{xx}-k_z^2)(\eta^2\varepsilon_{zz}-k_x^2)-(\eta^2\varepsilon_{xz}+k_xk_z)^2 = 0
+\end{equation}
+where $\eta = \omega/c$ and $\bm{k}=(k_x,k_z)$.
+
+\begin{itemize}
+\item Setting $k_x = 0$, TS
+\item Setting $k_z = 0$, F
+\item \Large $\delta_m^{TSF} \sim \omega_p\frac{\sqrt{3}}{2^{4/3}}\left(\frac{n_b/n_p}{\gamma_b}\right)^{1/3} $  
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Bret \& Deutsch 2005 -- 3}
+
+\begin{equation}
+\begin{aligned}
+    f_0 & = f_0^p + f_0^b \\
+    f_0^p & = n_p\delta(p_x)\delta(p_y)\delta(p_z+P_p) \\
+    f_0^p & = n_b\delta(p_x)\delta(p_y)\delta(p_z-P_b)
+\end{aligned}
+\end{equation}
+where $P_p = mV_p$ (return impulsion) and $P_b=m\gamma_bV_b$ (beam impulsion), assuming $n_pV_p = n_bV_b$.
+
+\begin{equation}
+\begin{aligned}
+0 & = \left[ \frac{Z_xZ_z}{\beta^2} + \frac{\alpha Z_x}{x+\alpha Z_z} - \frac{\alpha Z_x}{\gamma_b(x-Z_z)}  \right]^2 \\
+  & + \left[ -\frac{Z_z^2}{\beta^2} + x^2 - 1 - \frac{\alpha}{\gamma}  \right] \\
+  & \times \left[ -\frac{Z_z^2}{\beta^2} + x^2 - \frac{x^2+\alpha^2Z_x^2}{(x+\alpha Z_z)^2} - \frac{\alpha}{\gamma_b^3} \frac{x^2+\gamma_b^2Z_x^2}{(x-Z_z)^2} \right]
+\end{aligned}
+\end{equation}
+The following dimensionless variables are
+\begin{equation}
+\bm{Z} = \frac{\bm{k}V_b}{\omega_p}, \alpha=\frac{n_b}{n_p}, \beta = \frac{V_b}{c}, x = \frac{\omega}{\omega_p}
+\end{equation}
+\end{frame}
+
+\begin{frame}{Bret \& Stockem \& Fiuza \& Silva, et al. POP (2013)}
+  \begin{itemize}
+  \item \textcolor{red}{oblique to filamentation transition}
+  \item The first derivative $\partial \delta_{Z_\perp, \infty}/\partial Z_\parallel$ always vanishes for $Z_\parallel = 0$.
+  \item The transition from one regime to the other occurs then when the second derivative vanishes at $Z_\parallel = 0$.
+  \item After some derivations -- $\gamma_0 = \sqrt{3/2}$, $\beta_0 = 1/\sqrt{3}$.
+  \end{itemize}
+\end{frame}
+
+
+
+
+\section{Simulation results}
+
+\subsection{Instability and nonlinear saturation}
+
+\begin{frame}{ES $>$ EM}
+
+\begin{figure}
+  \includegraphics[width=0.6\textwidth]{fig2.png}
+\end{figure}
+\begin{center}
+\begin{itemize}
+\item $v_0t_1=1.5$
+\item from $E_x$, the wavelength $\lambda \approx 0.4$, and do not propagate along $y$.
+\item $E_y$ closely correlated to $B_z$, and keep $|E_y|/|B_z| \sim 5$ -- \textbf{electric force much larger than magnetic force}
+\end{itemize}
+\end{center}
+\end{frame}
+
+\begin{frame}{my fig2}
+
+\begin{figure}
+  \includegraphics[width=0.3\textwidth]{f2d.png}
+  \includegraphics[width=0.3\textwidth]{f2e.png}
+  \includegraphics[width=0.3\textwidth]{f2f.png}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}{in line with theory}
+  \begin{itemize}
+  \item from $t_2-t_1=7.1$, wave amplitude increased by $50$ -- growth rate $\delta \approx 0.5$
+  \item wavelength $\lambda \approx 0.4$ -- $k_x = 2\pi/\lambda = 15$
+  \item \textcolor{red}{spatial power spectrum}
+  \end{itemize}
+  
+  \begin{figure}
+  	\includegraphics[width=0.5\textwidth]{fig3.png}
+  \end{figure}
+  
+  \begin{quote}
+    the range of wavenumbers $k_y$ that are unstable to the oblique mode instability is large in a cold plasma, while the wave growth is concentrated at low values of $k_y$ if the plasma is hot.
+  \end{quote}
+\end{frame}
+
+\begin{frame}[fragile]{my fig3}
+\begin{figure}
+  \includegraphics[width=0.45\textwidth]{f3a.png}
+  \includegraphics[width=0.45\textwidth]{f3b.png}
+\end{figure}
+
+% Ranges of $k_x$ \& $k_y$ are determined by $dx$ \& $dy$, for 
+% \begin{verbatim} 
+%   kx = ((0:nx-1)-nx/2)/(nx*dx) 
+% \end{verbatim}
+% so $k_{x,max} = \frac{1}{2d_x}$, which is \textcolor{red}{158} in the paper's parameters.
+
+% Here, my $k_x$ is much smaller than his, and I don't know why.
+\end{frame}
+
+\begin{frame}{nonlinear effects}
+  \begin{itemize}
+  \item harmonic along $k_x$ have emerged.
+  \item lepton phase space distribution $f(x,p_x)$.
+  \end{itemize}
+
+  \begin{figure}
+    \includegraphics[width=0.7\textwidth]{fig4.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{my fig4}
+\begin{figure}
+    \includegraphics[width=0.45\textwidth]{f4a.png}
+    \includegraphics[width=0.45\textwidth]{f4c.png}
+  \end{figure}
+  
+  seems particle number is not enough, comparing to Dieckmann's.
+\end{frame}
+
+\subsection{Shock formation}
+
+
+\begin{frame}{Saturation: phase space vortices}
+  \begin{itemize}
+  \item $2<x<4$: strong bipolar pulses in electric field dist.
+  \item $x>4$: thermalized downstream region
+  \item vortices of positrons and electrons are staggered along x.
+  \item $x=0$ \& $p_x=0$: initial right component -- instability starts after inter-penetration.
+  \end{itemize}
+  \begin{figure}
+    \includegraphics[width=0.7\textwidth]{fig5.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{my fig5}
+  \begin{figure}
+    \includegraphics[width=0.35\textwidth]{f5a.png}
+    \includegraphics[width=0.35\textwidth]{f5b.png} \\
+    \includegraphics[width=0.35\textwidth]{f5c.png}
+    \includegraphics[width=0.35\textwidth]{f5d.png} \\
+  \end{figure}
+  
+\begin{center}  
+\begin{itemize}
+  	\item upstream inflow: fast, cold
+    \item downstream: heated, mixed
+    \item transition layer: downstream vortex \& upstream oscillation
+    \item penetrating: slow, hot
+  \end{itemize}
+\end{center}
+\end{frame}
+
+\begin{frame}{Dieckmann's fig6}
+
+\begin{figure}
+\includegraphics[width=0.6\textwidth]{fig6.png}
+\end{figure}
+
+
+\begin{center}  
+\begin{itemize}
+%   	\item \footnotesize $x<-8$ \& $x>8$: stable
+    % \item \footnotesize $-6 < x < -5$: non-thermal -- \textcolor{red}{todo spectrum}
+    \item \footnotesize $-3 < x < 0$:
+    \begin{itemize}
+    \item \footnotesize penetrating component from hot/slow downstream
+    \item \footnotesize modulated upstream -- \textcolor{blue}{ponderomotive force} -- accelerate vortex
+    \end{itemize}
+    \item \footnotesize $0 < x < 6$: mixed up/downstream, and merge at $x=6$ -- piecewise planar struct. that lead to vortex
+    \begin{itemize}
+    \item \footnotesize the collapse of a ps vortex is an efficient way to scatter the leptons in $x,p_x$ space. \textcolor{red}{(Oppenheim, Newman \& Goldman, 1999)}
+    \end{itemize}
+  \end{itemize}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{my fig6}
+\begin{figure}
+\includegraphics[width=0.35\textwidth]{f6a.png}
+\includegraphics[width=0.35\textwidth]{f6b.png} \\
+\includegraphics[width=0.35\textwidth]{f6c.png}
+\includegraphics[width=0.35\textwidth]{f6d.png} \\
+\end{figure}
+\end{frame}
+
+\begin{frame}{Dieckmann's fig7}
+
+\begin{figure}
+\includegraphics[width=0.6\textwidth]{fig7.png}
+\end{figure}
+
+\begin{itemize}
+\item $x<0$: converges to initial density
+\item $x\approx 0$: density peak in (a) and disappear in (b)
+\begin{itemize}
+\item from fig.5(c), undisturbed rightside component
+\item from fig.6(a), large $E_x$ tore it apart by accelerating $e^{\pm}$ into opposite direction
+\end{itemize}
+\item $x>0$: compression ratio is 3 -- strong non-relativistic shock \textcolor{red}{(Zel'Dovich, 1967)}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{my fig7}
+\begin{figure}
+\includegraphics[width=0.35\textwidth]{f7a.png}
+\includegraphics[width=0.35\textwidth]{f7b.png} \\
+\includegraphics[width=0.35\textwidth]{f7c.png}
+\includegraphics[width=0.35\textwidth]{f7d.png} \\
+\end{figure}
+
+\begin{itemize}
+\item from c\&d: the spatial-temporal scale is designed dedicatedly.
+\item from b: \textcolor{blue}{density oscillation represents field oscillation, which means ponderomotive force and phase space vortex, leading to plasma heating.}
+\end{itemize}
+\end{frame}
+
+
+\subsection{Secondary instabilities and magnetic field generation}
+
+
+
+\begin{frame}{lepton heating}
+\begin{figure}
+\includegraphics[width=0.6\textwidth]{fig8.png}
+\end{figure}
+
+\begin{itemize}
+\item far upstream: cold dense beam ($p_0$) \& hot dilute beam ($-p_0$)
+\item transition layer: heated inflow \textcolor{red}{($\sim 100$ eV)} \& hot dilute right component \textcolor{red}{($\sim 1$ keV)} -- \textcolor{blue}{How?}
+\item downstream: hot beam
+\item \textcolor{red}{Integrated over y}?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{More analysis}
+\begin{itemize}
+\item transition layer: unstable from $E_x$ and $E_y$.
+\begin{itemize}
+\item not TS -- require two colliding flows well separated in phase space.
+\item \textcolor{red}{electron acoustic instability (Gary 1987)} -- not yet been explored in pair plasma
+\end{itemize}
+\item downstream: stable because no $E_x$ and $E_y$.
+\begin{itemize}
+\item velocity dist. is not Maxwellian.
+\item free energy that can be released by collisionless instability -- \textcolor{red}{TODO energy evolution}
+\end{itemize}
+\item anisotropy: $A = \frac{\int f_t(v_x,v_y)(v_x-p_0/2m_e)^2dv_xdv_y}{\int f_t(v_x,v_y)v_y^2dv_xdv_y} -1 \approx 6 > 0$ -- Weibel instability
+\end{itemize}
+\end{frame}
+
+\begin{frame}{my fig8}
+\includegraphics[width=0.3\textwidth]{f8a.png}
+\includegraphics[width=0.3\textwidth]{f8b.png} 
+\includegraphics[width=0.3\textwidth]{f8c.png} \\
+\includegraphics[width=0.3\textwidth]{f8d.png} 
+\includegraphics[width=0.3\textwidth]{f8e.png}
+\includegraphics[width=0.3\textwidth]{f8f.png} \\
+
+\begin{itemize}
+\item Need more particles in my simulation. ($random\_factor = 0.01$)
+\item \textcolor{red}{What is that slash???}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{downstream magnetic field}
+\begin{figure}
+\includegraphics[width=0.4\textwidth]{fig9.png}
+\end{figure}
+
+\begin{itemize}
+\item \footnotesize strong magnetic field: 
+\begin{itemize}
+\item \footnotesize amplitudes $\sim E_y$
+\item \footnotesize not correlated with $E_y$ -- not by oblique mode
+\item \footnotesize by WBI:  (\textcolor{red}{?})
+\begin{itemize}
+\item \footnotesize generate magnetowaves with a negligible $E$
+\item \footnotesize $\varepsilon_B/\varepsilon_k = 10\%$ -- $T_e$ from fig.8c and $B_z$ from fig.9b
+\end{itemize}
+\end{itemize}
+\item \footnotesize $r_g/\lambda_e = v_0/2B_z \approx 3$ and $T_g = 2\pi/B_z \approx 200$:
+\begin{itemize}
+\item \footnotesize leptons can not complete a full gyro-orbit
+\item \footnotesize instead, they are deflected by a small angle, thus being heated, as shown in fig.8c
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{my fig9}
+\includegraphics[width=0.3\textwidth]{f9a.png}
+\includegraphics[width=0.3\textwidth]{f9c.png} 
+\includegraphics[width=0.3\textwidth]{f9e2.png} \\
+\includegraphics[width=0.3\textwidth]{f9b.png} 
+\includegraphics[width=0.3\textwidth]{f9d.png}
+\includegraphics[width=0.3\textwidth]{f9f2.png} \\
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}{Summary -- done}
+
+\begin{enumerate}
+\item shock: initial evolution ($120/\omega_p$) \& non-relativistic ($0.2c$) \& equally dense \& pair
+\item phase space vortex (escaping downstream with up. inflow): unstable and heating by \textcolor{red}{collapse}
+\item NOT fully thermalize the up. that crossed it -- anisotropy -- WBI
+\begin{itemize}
+\item magnetic field patches will grow until lepton reach thermal equilibrium
+\item \textcolor{red}{which may be the saturation mechanism of $\varepsilon_B$ in energy evolution}
+\end{itemize}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Summary -- to be done}
+\begin{enumerate}
+\item for internal shock of microquasar jet: larger $v$ and $T$ -- up-limit of ES-shock
+\item detail spectrum of the unstable waves in transition layer ($p_x-p_y$) -- electron acoustic instability
+\end{enumerate}
+
+\end{frame}
+
+
+
+%{\setbeamercolor{palette primary}{fg=black, bg=yellow}
+\begin{frame}[standout]
+  Questions?
+\end{frame}
+%}
+
+%\appendix
+
+% \begin{frame}[fragile]{Backup slides}
+%   Sometimes, it is useful to add slides at the end of your presentation to
+%   refer to during audience questions.
+
+%   The best way to do this is to include the \verb|appendixnumberbeamer|
+%   package in your preamble and call \verb|\appendix| before your backup slides.
+
+%   \themename will automatically turn off slide numbering and progress bars for
+%   slides in the appendix.
+% \end{frame}
+
+% \begin{frame}[allowframebreaks]{References}
+
+%   \bibliography{demo}
+%   \bibliographystyle{abbrv}
+
+% \end{frame}
+
+\end{document}
